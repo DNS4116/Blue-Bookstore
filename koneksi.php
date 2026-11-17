@@ -1,10 +1,14 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "blue_bookstore";
+$host = getenv('DB_HOST') ?: 'localhost';
+$user = getenv('DB_USER') ?: 'root';
 
-// Membuat koneksi PHP ke database MySQL pada XAMPP.
+$pass = getenv('DB_PASSWORD');
+if ($pass === false) {
+    $pass = '';
+}
+
+$db = getenv('DB_NAME') ?: 'blue_bookstore';
+
 $koneksi = new mysqli($host, $user, $pass, $db);
 
 if ($koneksi->connect_error) {
