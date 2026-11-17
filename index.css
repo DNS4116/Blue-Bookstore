@@ -1,0 +1,333 @@
+/* :root berisi variable warna agar warna mudah dipakai ulang di seluruh CSS. */
+        :root {
+            --ink: #17263d;
+            --muted: #718097;
+            --blue: #1769e0;
+            --blue-dark: #0d4db0;
+            --line: #dce5f1;
+            --paper: #f7faff;
+            --white: #ffffff;
+        }
+
+        /* * memilih semua elemen HTML dan membuat padding ikut dihitung dalam ukuran elemen. */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* body adalah area utama halaman; aturan ini memusatkan kotak autentikasi. */
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 8% 12%, rgba(52, 145, 255, 0.22), transparent 30%),
+                radial-gradient(circle at 92% 88%, rgba(255, 194, 80, 0.2), transparent 26%),
+                var(--paper);
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* .auth-shell adalah kotak besar yang membungkus panel brand dan panel form. */
+        .auth-shell {
+            width: min(100%, 940px);
+            min-height: 590px;
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid rgba(23, 38, 61, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 24px 70px rgba(29, 64, 112, 0.14);
+        }
+
+        /* .brand-panel adalah sisi kiri yang menampilkan nama dan identitas toko. */
+        .brand-panel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px 42px;
+            overflow: hidden;
+            color: var(--white);
+            background: linear-gradient(155deg, #153f82, #1769e0 62%, #4ea7f8);
+        }
+
+        /* ::after membuat hiasan lingkaran tambahan tanpa elemen HTML baru. */
+        .brand-panel::after {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            right: -100px;
+            bottom: -90px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.08), 0 0 0 58px rgba(255, 255, 255, 0.05);
+        }
+
+        /* .logo mengatur tulisan nama toko. */
+        .logo {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
+
+        /* .brand-copy berisi judul dan deskripsi pada panel kiri. */
+        .brand-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-copy h1 {
+            max-width: 320px;
+            margin: 0 0 18px;
+            font-size: clamp(2.3rem, 5vw, 4.2rem);
+            line-height: 0.98;
+            font-weight: normal;
+        }
+
+        .brand-copy p {
+            max-width: 280px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-family: Arial, sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* .form-panel adalah sisi kanan yang menampung form autentikasi. */
+        .form-panel {
+            display: flex;
+            align-items: center;
+            padding: 48px clamp(28px, 6vw, 76px);
+        }
+
+        /* .form-wrap membatasi lebar form agar tetap nyaman dibaca. */
+        .form-wrap {
+            width: 100%;
+            max-width: 390px;
+            margin: auto;
+        }
+
+        /* .form-heading mengatur judul yang berubah saat Login/Sign Up dipilih. */
+        .form-heading {
+            margin-bottom: 30px;
+        }
+
+        .form-heading h2 {
+            margin: 0 0 9px;
+            font-size: 2.2rem;
+            font-weight: normal;
+        }
+
+        .form-heading p,
+        .switch-text {
+            margin: 0;
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+        }
+
+        .message {
+            margin: 0 0 20px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .message.success {
+            color: #17613a;
+            background: #e9f8ef;
+        }
+
+        .message.error {
+            color: #9d2929;
+            background: #fff0f0;
+        }
+
+        /* Semua form disembunyikan terlebih dahulu. Form dengan class active akan ditampilkan. */
+        .auth-form {
+            display: none;
+        }
+
+        /* .active menandai form yang sedang dipilih pengguna. */
+        .auth-form.active {
+            display: block;
+            animation: appear 260ms ease-out;
+        }
+
+        /* .field memberi jarak antara satu label dan input dengan field berikutnya. */
+        .field {
+            margin-bottom: 18px;
+        }
+
+        /* label adalah teks penjelas untuk setiap input. Atribut for-nya terhubung ke id input. */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 0.03em;
+        }
+
+        /* input adalah tempat pengguna mengetik nama, email, dan password. */
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            outline: none;
+            background: #fbfdff;
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        /* :focus aktif ketika input sedang dipilih atau sedang diketik pengguna. */
+        input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.12);
+        }
+
+        /* .submit-button adalah tombol untuk mengirim data form. */
+        .submit-button {
+            width: 100%;
+            margin-top: 6px;
+            padding: 14px 18px;
+            color: var(--white);
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            background: var(--blue);
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 160ms ease, transform 160ms ease;
+        }
+
+        /* :hover aktif ketika kursor berada di atas tombol kirim. */
+        .submit-button:hover {
+            background: var(--blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* .switch-text berisi ajakan untuk berpindah ke form lain. */
+        .switch-text {
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        /* .switch-button tidak mengirim form; tombol ini hanya mengganti form yang aktif. */
+        .switch-button {
+            padding: 0;
+            color: var(--blue);
+            border: 0;
+            cursor: pointer;
+            background: none;
+            font: inherit;
+            font-weight: bold;
+        }
+
+        /* Memberi penanda visual ketika kursor berada di atas tombol perpindahan. */
+        .switch-button:hover {
+            color: var(--blue-dark);
+            text-decoration: underline;
+        }
+
+        /* Animasi singkat saat form baru ditampilkan. */
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* @media membuat tampilan lebih sesuai untuk layar dengan lebar maksimal 700px. */
+        @media (max-width: 700px) {
+            body {
+                padding: 14px;
+            }
+
+            .auth-shell {
+                display: block;
+                min-height: auto;
+            }
+
+            .brand-panel {
+                min-height: 235px;
+                padding: 28px 26px;
+            }
+
+            .brand-copy h1 {
+                margin-bottom: 10px;
+                font-size: 2.5rem;
+            }
+
+            .brand-copy p {
+                font-size: 0.82rem;
+            }
+
+            .form-panel {
+                padding: 38px 26px 42px;
+            }
+        }
+
+        /* Demo Box & Account Selector Styles */
+        .demo-box {
+            margin-top: 20px;
+            padding: 14px;
+            background: #f0f7ff;
+            border: 1px dashed #93c5fd;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            color: #1e3a8a;
+        }
+        .demo-box strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #1d4ed8;
+        }
+        .demo-btns {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .demo-btn {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .demo-btn:hover {
+            background: #1d4ed8;
+        }
+        .demo-btn.user {
+            background: #0284c7;
+        }
+        .demo-btn.user:hover {
+            background: #0369a1;
+        }
+        .argon-badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 3px 8px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: bold;
+            font-family: sans-serif;
+        }

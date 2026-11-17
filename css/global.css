@@ -1,0 +1,208 @@
+/* ==========================================================================
+   GLOBAL CSS - BLUE BOOKSTORE
+   Desain token, variabel CSS, typography, dan utility classes global.
+   Digunakan di seluruh halaman agar tidak perlu menuliskan inline style.
+   ========================================================================== */
+
+:root {
+    /* Brand & Admin Palette */
+    --primary: #172554;
+    --primary-hover: #1e3a8a;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
+
+    /* Customer Palette */
+    --customer-primary: #075985;
+    --customer-primary-dark: #0369a1;
+    --customer-accent: #0284c7;
+    --customer-accent-light: #e0f2fe;
+
+    /* Neutral & Surfaces */
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+
+    /* Status Colors */
+    --success: #16a34a;
+    --success-light: #dcfce7;
+    --success-border: #bbf7d0;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+    --danger-border: #fecaca;
+    --warning: #ca8a04;
+    --warning-light: #fef9c3;
+    --warning-border: #fef08a;
+    --info: #3730a3;
+    --info-light: #e0e7ff;
+}
+
+/* Reset Standar */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES (PENGGANTI INLINE STYLE)
+   ========================================================================== */
+
+/* Typography & Text Align */
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+
+.fw-normal { font-weight: 400 !important; }
+.fw-semibold { font-weight: 600 !important; }
+.fw-bold { font-weight: 700 !important; }
+.fw-extrabold { font-weight: 800 !important; }
+
+.fs-xs { font-size: 0.75rem !important; }
+.fs-sm { font-size: 0.85rem !important; }
+.fs-base { font-size: 0.92rem !important; }
+.fs-md { font-size: 1rem !important; }
+.fs-lg { font-size: 1.15rem !important; }
+.fs-xl { font-size: 1.35rem !important; }
+.fs-2xl { font-size: 1.6rem !important; }
+
+/* Text Colors */
+.text-muted { color: var(--text-muted) !important; }
+.text-success { color: var(--success) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-primary { color: var(--primary) !important; }
+.text-accent { color: var(--accent) !important; }
+.text-customer-primary { color: var(--customer-primary) !important; }
+.text-dark { color: var(--text-dark) !important; }
+
+/* Display & Layout */
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-inline { display: inline !important; }
+.d-block { display: block !important; }
+.d-none { display: none !important; }
+
+.flex-column { flex-direction: column !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.align-center { align-items: center !important; }
+.align-start { align-items: flex-start !important; }
+.align-end { align-items: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-center { justify-content: center !important; }
+.justify-start { justify-content: flex-start !important; }
+.justify-end { justify-content: flex-end !important; }
+
+/* Gap Utilities */
+.gap-1 { gap: 4px !important; }
+.gap-2 { gap: 8px !important; }
+.gap-3 { gap: 12px !important; }
+.gap-4 { gap: 16px !important; }
+.gap-5 { gap: 24px !important; }
+
+/* Spacing Margins */
+.m-0 { margin: 0 !important; }
+.mt-1 { margin-top: 4px !important; }
+.mt-2 { margin-top: 8px !important; }
+.mt-3 { margin-top: 14px !important; }
+.mt-4 { margin-top: 20px !important; }
+.mt-5 { margin-top: 28px !important; }
+
+.mb-1 { margin-bottom: 4px !important; }
+.mb-2 { margin-bottom: 8px !important; }
+.mb-3 { margin-bottom: 14px !important; }
+.mb-4 { margin-bottom: 20px !important; }
+.mb-5 { margin-bottom: 28px !important; }
+
+/* Padding */
+.p-0 { padding: 0 !important; }
+.p-2 { padding: 8px !important; }
+.p-3 { padding: 14px !important; }
+.p-4 { padding: 20px !important; }
+
+/* Width */
+.w-100 { width: 100% !important; }
+.w-auto { width: auto !important; }
+
+/* Specific Semantic Helpers */
+.val-success-lg {
+    color: var(--success);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.table-empty-cell {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.btn-auto {
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 12px 28px !important;
+}
+
+.btn-sm {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+}
+
+.btn-inline {
+    display: inline !important;
+}
+
+.form-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag-qris {
+    color: #ef4444;
+    font-weight: 800;
+}
+
+.border-dashed-top {
+    border-top: 2px dashed var(--border-color);
+    padding-top: 16px;
+    margin-top: 20px;
+}
+
+.total-highlight-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--customer-primary);
+}
+
+.free-tag {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.checkout-back-link {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.checkout-back-link:hover {
+    color: var(--customer-primary);
+    text-decoration: underline;
+}
