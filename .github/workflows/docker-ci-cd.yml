@@ -1,0 +1,35 @@
+
+name: Blue BookStore CI/CD
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: ${{ github.event_name == 'push' }}
+          tags: ghcr.io/dns4116/blue-bookstore:latest
+
+      - name: Deployment artifact ready
+        if: github.event_name == 'push'
+        run: echo "Docker image published to GHCR"
