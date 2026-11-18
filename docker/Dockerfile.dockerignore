@@ -1,0 +1,7 @@
+
+.git
+.env
+docker/
+snipset/
+README.md
+database.sql
